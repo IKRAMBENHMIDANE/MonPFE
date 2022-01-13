@@ -10,18 +10,17 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	// ClientRepository clientRepository = new ClientRepositoryImpl();
-	ClientRepository clientRepository;
+	private ClientRepository clientRepository;
+	public void setClientRepository(ClientRepository clientRepository) {
+		this.clientRepository = clientRepository;
+		}
+
 
 	/*
 	 * @Override public Client save(Client c) {
 	 * System.out.println("Service Layer : ClientServiceImpl Level... "); return
 	 * clientRepository.save(c); }
 	 */
-
-	@Override
-	public Client save(Client c) {
-		return null;
-	}
 
 	/*
 	 * public void setClientRepository(ClientRepository clientRepository) {
@@ -32,4 +31,26 @@ public class ClientServiceImpl implements ClientService {
 		this.clientRepository = clientRepository;
 	}
 
+	@Override
+	public Client save(Client c) {
+		return clientRepository.save(c);
+	}
+
+	@Override
+	public Client update(Client c) {
+		return clientRepository.update(c);
+	}
+
+
+	@Override
+	public void deleteById(long id) {
+		clientRepository.deleteById(id);
+
+		
+	}
+
+	@Override
+	public Client findById(long id) {
+	return clientRepository.findById(id);
+	}
 }

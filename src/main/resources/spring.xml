@@ -5,8 +5,7 @@
 		class="cigma.pfe.controllers.ClientController" scope="prototype">
 		<constructor-arg ref="service" />
 	</bean>
-	<bean id="service" class="cigma.pfe.services.ClientServiceImpl"
-		scope="prototype">
+	<bean id="service" class="cigma.pfe.services.ClientServiceImpl" scope="prototype">
 		<constructor-arg ref="repository" />
 	</bean>
 	<bean id="repository"
