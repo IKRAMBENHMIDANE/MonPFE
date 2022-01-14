@@ -1,5 +1,8 @@
 package cigma.pfe.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import cigma.pfe.models.Client;
 import cigma.pfe.repositories.ClientRepository;
 import cigma.pfe.repositories.ClientRepositoryImpl;
@@ -52,5 +55,12 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public Client findById(long id) {
 	return clientRepository.findById(id);
+	}
+
+	private List<Client> clientsRepository = new ArrayList<>();
+	
+	@Override
+	public List<Client> findAll() {
+		return  ((ClientRepository) clientsRepository).findAll();
 	}
 }

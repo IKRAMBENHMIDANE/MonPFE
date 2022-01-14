@@ -2,10 +2,14 @@ package cigma.pfe.repositories;
 
 import cigma.pfe.models.Client;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 public class ClientRepositoryImpl implements ClientRepository {
 	
@@ -24,7 +28,6 @@ public class ClientRepositoryImpl implements ClientRepository {
 
 	@Override
 	public Client save(Client c) {
-		System.out.println("DAO Layer : ClientRepositoryImpl Level");
 		em.getTransaction().begin();
 		em.persist(c);
 		em.getTransaction().commit();
@@ -53,6 +56,15 @@ public class ClientRepositoryImpl implements ClientRepository {
 	@Override
 	public Client findById(long id) {
 	return em.find(Client.class,id);
+	}
+	
+	private List<Client> clientsRepository = new ArrayList<>();
+	
+	@Override
+	public List<Client> findAll() {
+		Query query = em.createQuery("SELECT u FROM unit_clients u",Client.class);
+	    return (List<Client>) query.getResultList();
+		
 	}
 
 	
