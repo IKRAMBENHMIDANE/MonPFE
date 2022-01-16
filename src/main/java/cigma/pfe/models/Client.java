@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Getter
@@ -30,6 +32,40 @@ public class Client {
 
 	@Column
 	private String name;
+	
+	@OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "client")
+	private List<Facture> factures;
+	
+	@ManyToMany(cascade = {CascadeType.PERSIST})
+	@JoinTable(name="my_join_table_client_promotion",joinColumns = @JoinColumn(name = "client_fk",referencedColumnName = "id"),inverseJoinColumns = @JoinColumn(name = "promotion_fk",referencedColumnName = "id"))
+	private List<Promotion> promotions;
+	
+	@OneToOne(cascade = {CascadeType.PERSIST},mappedBy = "client")
+	private CarteFidelio carteFidelio;
+
+	public List<Promotion> getPromotions() {
+		return promotions;
+	}
+
+	public CarteFidelio getCarteFidelio() {
+		return carteFidelio;
+	}
+
+	public void setCarteFidelio(CarteFidelio carteFidelio) {
+		this.carteFidelio = carteFidelio;
+	}
+
+	public void setPromotions(List<Promotion> promotions) {
+		this.promotions = promotions;
+	}
+
+	public List<Facture> getFactures() {
+		return factures;
+	}
+
+	public void setFactures(List<Facture> factures) {
+		this.factures = factures;
+	}
 
 	@Override
 	public String toString() {

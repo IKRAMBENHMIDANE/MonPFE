@@ -41,7 +41,7 @@ public class FactureRepositoryImpl implements FactureRepository {
 	public Facture update(Facture f) {
 		emm.getTransaction().begin();
 		Facture currentFacture =emm.find(Facture.class,f.getId());
-		currentFacture.setDate(f.getDate());
+		currentFacture.setDescription(f.getDescription());
 		emm.persist(currentFacture);
 		emm.getTransaction().commit();
 		return null;

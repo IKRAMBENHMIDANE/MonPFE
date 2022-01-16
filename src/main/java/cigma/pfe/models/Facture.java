@@ -1,6 +1,6 @@
 package cigma.pfe.models;
 
-import java.util.Date;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,28 +18,50 @@ public class Facture {
 	private long id;
 
 	@Column
-	private Date date;
+	private String description;
 
-	@Transient
+	@Column
 	double amount;
 	
+	@ManyToOne
+	@JoinColumn(name = "client_id")
+	private Client client;
+
+	
+	public Facture(String description, double amount, Client client) {
+		super();
+		this.description = description;
+		this.amount = amount;
+		this.client = client;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
+	}
 	public Facture() {
 		
 	}
-	public Facture(Date date) {
-		this.date = date;
+	public Facture(String description) {
+		this.description = description;
 	}
 
-	public Facture(long id, Date date) {
+	public Facture(long id, String description) {
 		this.id = id;
-		this.date = date;
+		this.description = description;
 	}
+	public Facture(double amount, String description) {
+		this.amount = amount;
+		this.description = description;
+	}
+
 	
 
 	
 	@Override
 	public String toString() {
-		return "Facture{" + "id=" + id + ", date='" + date + '\'' + '}';
+		return "Facture{" + "id=" + id + ", description='" + description + '\'' + '}';
 
 	}
 
@@ -47,17 +69,23 @@ public class Facture {
 		this.id = id;
 	}
 
+	public double getAmount() {
+		return amount;
+	}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
 	public long getId() {
 		return id;
 
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getDescription() {
+		return description;
 	}
 
 }
