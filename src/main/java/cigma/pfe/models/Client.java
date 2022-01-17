@@ -42,6 +42,9 @@ public class Client {
 	
 	@OneToOne(cascade = {CascadeType.PERSIST},mappedBy = "client")
 	private CarteFidelio carteFidelio;
+	
+	@OneToOne(cascade = {CascadeType.PERSIST},mappedBy = "client")
+	private Adresse adresse;
 
 	public List<Promotion> getPromotions() {
 		return promotions;

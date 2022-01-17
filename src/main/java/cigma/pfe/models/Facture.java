@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Getter
@@ -26,7 +28,11 @@ public class Facture {
 	@ManyToOne
 	@JoinColumn(name = "client_id")
 	private Client client;
-
+    
+	@ManyToMany(cascade = {CascadeType.PERSIST})
+	@JoinTable(name="my_join_table_facture_produit",joinColumns = @JoinColumn(name = "facture_fk",referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn(name = "produit_fk",referencedColumnName = "id"))
+	private List<Produit> produits;
 	
 	public Facture(String description, double amount, Client client) {
 		super();

@@ -1,6 +1,7 @@
 package cigma.pfe.models;
 
 import lombok.Getter;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import javax.persistence.Entity;
