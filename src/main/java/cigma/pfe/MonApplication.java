@@ -24,13 +24,10 @@ public class MonApplication {
 		ctrl1.save(client);*/
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-		ClientController ctrl = (ClientController)context.getBean("controller");
+		ClientController ctrl = (ClientController)context.getBean("controller1");
 		
-		Client client = new Client("OMAR");
-		CarteFidelio carteFidelio = new CarteFidelio("A29930489");
-		carteFidelio.setClient(client);
-		client.setCarteFidelio(carteFidelio);
-
+		Client client = new Client("NADA");
+		
 		ctrl.save(client);
 		
 		

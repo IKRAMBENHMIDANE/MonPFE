@@ -5,22 +5,22 @@ import cigma.pfe.services.ClientService;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import cigma.pfe.models.Client;
 import cigma.pfe.repositories.ClientRepository;
 import cigma.pfe.services.ClientServiceImpl;
 
+@Controller("controller1")
 public class ClientController {
-	// ClientService clientService = new ClientServiceImpl();
+	
+	@Autowired
 	ClientService clientService;
 
-	public void setClientService(ClientService clientService) {
-		this.clientService = clientService;
-	}
+	
 
-	/*
-	 * public void setClientService(ClientService clientService) {
-	 * this.clientService = clientService; }
-	 */
+	
 
 	public ClientController(ClientService clientService) {
 		System.out.println("Call ClientController with clientServiceparam....");

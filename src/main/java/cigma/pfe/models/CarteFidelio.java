@@ -15,6 +15,13 @@ import javax.persistence.OneToOne;
 @Setter
 @ToString
 public class CarteFidelio {
+	public CarteFidelio(long id, String code, Client client) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.client = client;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -51,5 +58,6 @@ public class CarteFidelio {
 	public CarteFidelio(String code) {
 		this.code = code;
 	}
+	public CarteFidelio() {}
 
 }

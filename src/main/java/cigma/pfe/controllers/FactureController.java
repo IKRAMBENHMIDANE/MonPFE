@@ -1,15 +1,18 @@
 package cigma.pfe.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
 import cigma.pfe.models.Client;
 import cigma.pfe.models.Facture;
 import cigma.pfe.services.ClientService;
 import cigma.pfe.services.FactureService;
 
+@Controller("controller2")
 public class FactureController {
+	@Autowired
 	FactureService factureService;
-	public void setFactureService(FactureService factureService) {
-		this.factureService = factureService;
-		}
+	
 	public FactureController ( FactureService factureService) {
 		System.out.println("Call FactureController with factureServiceparam....");
 		this.factureService = factureService;

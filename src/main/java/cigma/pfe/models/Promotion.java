@@ -22,4 +22,5 @@ public class Promotion {
 	public Promotion(String description) {
 		this.description = description;
 	}
+	public Promotion(){}
 } 

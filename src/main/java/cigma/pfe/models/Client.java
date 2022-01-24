@@ -1,6 +1,7 @@
 package cigma.pfe.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,9 @@ import javax.persistence.*;
 @Getter
 @Setter
 @AllArgsConstructor
+@Data
 @Entity(name = "unit_clients")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

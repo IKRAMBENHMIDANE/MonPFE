@@ -1,9 +1,16 @@
 package cigma.pfe.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import cigma.pfe.models.Facture;
 import cigma.pfe.repositories.ClientRepository;
 import cigma.pfe.repositories.FactureRepository;
 
+
+@Service
+@Transactional
 public class FactureServiceImpl implements FactureService {
 	
 	public FactureServiceImpl() {
@@ -14,10 +21,9 @@ public class FactureServiceImpl implements FactureService {
 		System.out.println("Call FactureService with factureRepositoryparam....");
 		this.factureRepository = factureRepository;
 	}
+	@Autowired
 	private FactureRepository factureRepository;
-	public void setClientRepository(FactureRepository factureRepository) {
-		this.factureRepository = factureRepository;
-		}
+	
 
 	@Override
 	public Facture create(Facture f) {
