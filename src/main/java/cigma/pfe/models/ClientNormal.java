@@ -14,4 +14,7 @@ public class ClientNormal extends Client {
 		super(name);
 		this.importanceLevel = importanceLevel;
 	}
+	public ClientNormal() {
+		
+	}
 }

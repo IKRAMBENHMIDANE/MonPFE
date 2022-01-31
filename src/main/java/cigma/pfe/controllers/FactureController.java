@@ -1,40 +1,38 @@
 package cigma.pfe.controllers;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import cigma.pfe.models.Client;
 import cigma.pfe.models.Facture;
-import cigma.pfe.services.ClientService;
 import cigma.pfe.services.FactureService;
 
 @Controller("controller2")
 public class FactureController {
 	@Autowired
 	FactureService factureService;
-	
-	public FactureController ( FactureService factureService) {
-		System.out.println("Call FactureController with factureServiceparam....");
-		this.factureService = factureService;
+
+	public Facture save(Facture  fac) {
+		return factureService.save(fac);
 	}
 
-	public FactureController() {
-		System.out.println("CallFactureController ....");
+	public Facture  modify(Facture  fac) {
+		return factureService.modify(fac);
 	}
-	public void create(Facture f) {
-		System.out.println("FactureController level...");
-		factureService.create(f);
+
+	public void remove(long idFac) {
+		factureService.remove(idFac);
 	}
-	public void update(Facture f) {
-		System.out.println("FcatureController level...");
-		factureService.update(f);
+
+	public Facture  getOne(long idFac) {
+		return factureService.getOne(idFac);
 	}
-	public void delete(Facture f) {
-		System.out.println("FactureController level...");
-		factureService.delete(f);
+
+	public List<Facture > getAll() {
+		return factureService.getAll();
 	}
-	public Facture read(Facture f){
-		return factureService.read(f);
+	public List<Facture > findByDescription(String description) {
+		return factureService.findByDescription(description);
 		}
-
 }

@@ -14,4 +14,8 @@ public class ClientVip extends Client {
 		super(name);
 		this.preferences = preferences;
 	}
+	public ClientVip() {
+		
+	}
+
 }
